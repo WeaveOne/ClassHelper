@@ -15,9 +15,9 @@ import cn.willvi.dao.DaoSupport;
 @SpringBootTest(classes={ClassHelperApplication.class})
 public class ClassHelperApplicationTests {
 
-//	@Test
-//	public void contextLoads() {
-//	}
+	@Test
+	public void contextLoads() {
+	}
 //
 //	@Autowired
 //	private WwMapper wwMapper;
