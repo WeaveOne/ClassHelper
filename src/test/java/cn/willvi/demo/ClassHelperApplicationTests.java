@@ -25,12 +25,12 @@ public class ClassHelperApplicationTests {
 //	public void testfindAll(){
 //		wwMapper.findAll();
 //	}
-//	@Autowired
-//	private DaoSupport daoSupport;
-//	@Test
-//	public void testfindAll() throws Exception{
-//		daoSupport.save("WwMapper.findAll", "");
-//	}
+	@Autowired
+	private DaoSupport daoSupport;
+	@Test
+	public void testfindAll() throws Exception{
+		daoSupport.save("WwMapper.findAll", "");
+	}
 	
 //	@Resource(name="userService")
 //	UserService userService;
