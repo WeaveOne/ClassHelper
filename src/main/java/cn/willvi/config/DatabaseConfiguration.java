@@ -85,7 +85,7 @@ public class DatabaseConfiguration implements EnvironmentAware {
         //添加插件
         sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mybatis/mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mybatis/mapper/*/*.xml"));
         sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:mybatis/mybatis-config.xml"));
         return sqlSessionFactoryBean.getObject();
     }
