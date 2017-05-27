@@ -30,7 +30,8 @@ public class AppUserController extends BaseController{
 		PageData pd = this.getPageData();
 		if(!pd.isEmpty() && pd.containsKey("s_id") && pd.containsKey("s_name")) {
 			String s_id = pd.getString("s_id");
-			if(s_id.length()<8 || s_id.length()>15) {
+			if(s_id.length()<8 || s_id.length()>15 || !s_id.matches("[0-9]+")) {
+				pd.clear();
 				pd.put("status", "Illegal student id!");
 				return pd;
 			} else {
@@ -38,6 +39,7 @@ public class AppUserController extends BaseController{
 				return pd;
 			}
 		} else {
+			pd.clear();
 			pd.put("status", "Parameter is not complete!");
 			return pd;
 		}

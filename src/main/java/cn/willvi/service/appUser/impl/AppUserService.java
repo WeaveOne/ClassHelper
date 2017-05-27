@@ -12,20 +12,26 @@ import cn.willvi.util.PageData;
 public class AppUserService implements AppUserManager {
 	@Resource(name = "appUserDaoSupport")
 	private AppUserDao appUserDao;
-
+	
+	/*
+	 * 学生用户查询
+	 */
+	public PageData findBySId(PageData pd) throws Exception {
+		return (PageData) appUserDao.findBySId("appUserMapper.findBySId", pd);
+	}
 	/*
 	 * 学生用户注册
 	 */
 	public PageData Regist(PageData pd) throws Exception {
 		PageData stu = (PageData) appUserDao.findBySId("appUserMapper.findBySId", pd);
-		if(stu.isEmpty()) {
+		if(stu == null) {
 			appUserDao.addStu("appUserMapper.addStu", pd);
 			pd.clear();
 			pd.put("status", "Registered Successfully!");
 			return pd;
 		} else {
 			pd.clear();
-			pd.put("status", "The user is registered!");
+			pd.put("status", "The user has registered!");
 			return pd;
 		}
 	}
