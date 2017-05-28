@@ -22,17 +22,13 @@ public class AppUserService implements AppUserManager {
 	/*
 	 * 学生用户注册
 	 */
-	public PageData Regist(PageData pd) throws Exception {
+	public String Regist(PageData pd) throws Exception {
 		PageData stu = (PageData) appUserDao.findBySId("appUserMapper.findBySId", pd);
 		if(stu == null) {
 			appUserDao.addStu("appUserMapper.addStu", pd);
-			pd.clear();
-			pd.put("status", "Registered Successfully!");
-			return pd;
+			return "Registration Successful";
 		} else {
-			pd.clear();
-			pd.put("status", "The user has registered!");
-			return pd;
+			return "Registration Failed";
 		}
 	}
 }

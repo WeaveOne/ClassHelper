@@ -6,7 +6,7 @@ public interface AppUserManager {
 	/*
 	 * 学生用户注册
 	 */
-	public PageData Regist(PageData pd) throws Exception;
+	public String Regist(PageData pd) throws Exception;
 	/*
 	 * 学生用户查询
 	 */

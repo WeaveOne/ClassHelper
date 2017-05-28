@@ -23,25 +23,21 @@ public class AppUserController extends BaseController{
 	/*
 	 * 用户注册
 	 */
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/regist")
 	@ResponseBody
-	public Map<String, Object> regist() throws Exception{
+	public String regist() throws Exception{
 		PageData pd = this.getPageData();
 		if(!pd.isEmpty() && pd.containsKey("s_id") && pd.containsKey("s_name")) {
 			String s_id = pd.getString("s_id");
 			if(s_id.length()<8 || s_id.length()>15 || !s_id.matches("[0-9]+")) {
-				pd.clear();
-				pd.put("status", "Illegal student id!");
-				return pd;
+				return "Registration Failed";
 			} else {
-				appUserManager.Regist(pd);
-				return pd;
+				return appUserManager.Regist(pd);
 			}
 		} else {
 			pd.clear();
 			pd.put("status", "Parameter is not complete!");
-			return pd;
+			return "Registration Failed";
 		}
 	}
 }
