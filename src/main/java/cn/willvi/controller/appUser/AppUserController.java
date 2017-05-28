@@ -35,8 +35,6 @@ public class AppUserController extends BaseController{
 				return appUserManager.Regist(pd);
 			}
 		} else {
-			pd.clear();
-			pd.put("status", "Parameter is not complete!");
 			return "Registration Failed";
 		}
 	}
