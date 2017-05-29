@@ -16,7 +16,7 @@ public class AppTeacherService implements AppTeacherManager {
 	 * 教师登录
 	 */
 	public String login(PageData pd) throws Exception {
-		pd = (PageData) appTeacherDao.findByTIdPwd("appTeacherMapper.findByTIdPwd", pd);
+		pd = (PageData) appTeacherDao.findByTIdTname("appTeacherMapper.findByTIdTname", pd);
 		if(pd == null) {
 			return "Login Failed";
 		} else {

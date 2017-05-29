@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="appTeacherMapper">
 	<!-- 通过t_id查找教师 -->
-	<select id="findByTIdPwd" parameterType="pd" resultType="pd" >
+	<select id="findByTIdTname" parameterType="pd" resultType="pd" >
 		select 
 			*
 		from 
 			app_teacher
 		where 
-			t_id = #{t_id} and pwd = #{pwd}
+			t_id = #{t_id} and t_name = #{t_name}
 	</select>
 </mapper>
