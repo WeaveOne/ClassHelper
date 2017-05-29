@@ -23,7 +23,7 @@ public class AppTeacherController extends BaseController{
 	@ResponseBody
 	public String login() throws Exception{
 		PageData pd = this.getPageData();
-		if(!pd.isEmpty() && pd.containsKey("t_id") && pd.containsKey("pwd")) {
+		if(!pd.isEmpty() && pd.containsKey("t_id") && pd.containsKey("t_name")) {
 			String t_id = pd.getString("t_id");
 			if(t_id.length()<5 || t_id.length()>15 || !t_id.matches("[0-9]+")) {
 				return "Login Failed";
