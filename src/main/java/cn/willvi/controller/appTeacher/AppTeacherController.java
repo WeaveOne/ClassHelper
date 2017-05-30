@@ -1,5 +1,7 @@
 package cn.willvi.controller.appTeacher;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -33,5 +35,17 @@ public class AppTeacherController extends BaseController{
 		} else {
 			return "Login Failed";
 		}
+	}
+	
+	/*
+	 * 教师发布二维码
+	 */
+	@RequestMapping(value = "/publishQrc")
+	@ResponseBody
+	public String publishQrc() throws Exception{
+		PageData pd = this.getPageData();
+		Date time = new Date();
+		pd.put("time", time);
+		return appTeacherManager.publishQrc(pd);
 	}
 }

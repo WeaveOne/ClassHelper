@@ -23,5 +23,18 @@ public class AppTeacherService implements AppTeacherManager {
 			return "Login Successful";
 		}
 	}
+	
+	/*
+	 * 教师发布二维码
+	 */
+	public String publishQrc(PageData pd) throws Exception {
+		try { 
+			appTeacherDao.createQrc("appQrcMapper.addQrc", pd);
+			appTeacherDao.createSignIn("appSignInMapper.addSignIn", pd);
+			return "Publish Successful";
+		} catch(Exception e) {
+			return "Publish Failed";
+		}
+	}
 
 }

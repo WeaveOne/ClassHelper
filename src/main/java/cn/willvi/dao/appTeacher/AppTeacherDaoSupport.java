@@ -16,5 +16,18 @@ public class AppTeacherDaoSupport implements AppTeacherDao {
 	public Object findByTIdTname(String statement, Object obj) throws Exception {
 		return sqlSessionTemplate.selectOne(statement, obj);
 	}
-
+	
+	/*
+	 * 创建二维码表
+	 */
+	public void createQrc(String statement, Object obj) throws Exception {
+		sqlSessionTemplate.insert(statement, obj);
+	}
+	
+	/*
+	 * 创建签到表
+	 */
+	public void createSignIn(String statement, Object obj) throws Exception {
+		sqlSessionTemplate.insert(statement, obj);
+	}
 }
