@@ -44,8 +44,6 @@ public class AppTeacherController extends BaseController{
 	@ResponseBody
 	public String publishQrc() throws Exception{
 		PageData pd = this.getPageData();
-		Date time = new Date();
-		pd.put("time", time);
 		return appTeacherManager.publishQrc(pd);
 	}
 }
