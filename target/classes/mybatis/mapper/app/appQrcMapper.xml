@@ -7,4 +7,11 @@
 		app_qrc(url, time, t_id)
 		values(#{url}, #{time}, #{t_id})
 	</insert>
+	
+	<!-- 根据url和time查询二维码表 -->
+	<select id="findByUrlTime" parameterType="pd" resultType="pd">
+		select *
+		from app_qrc
+		where url = #{url} and time = #{time}
+	</select>
 </mapper>

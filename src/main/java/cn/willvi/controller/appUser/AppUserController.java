@@ -1,14 +1,11 @@
 package cn.willvi.controller.appUser;
 
-import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import cn.willvi.controller.BaseController;
 import cn.willvi.service.appUser.AppUserManager;
@@ -37,5 +34,15 @@ public class AppUserController extends BaseController{
 		} else {
 			return "Registration Failed";
 		}
+	}
+	
+	/*
+	 * 学生扫码登录并自动完成签到
+	 */
+	@RequestMapping(value = "/login")
+	@ResponseBody
+	public String login() throws Exception {
+		PageData pd = this.getPageData();
+		return appUserManager.login(pd);
 	}
 }

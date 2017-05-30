@@ -23,4 +23,17 @@ public class AppUserDaoSupport implements AppUserDao {
 		sqlSessionTemplate.insert(statement, obj);
 	}
 
+	/*
+	 * 根据url和time查询二维码表
+	 */
+	public Object findByUrlTime(String statement, Object obj) throws Exception {
+		return sqlSessionTemplate.selectOne(statement, obj);
+	}
+	
+	/*
+	 * 创建签到表
+	 */
+	public void createSignIn(String statement, Object obj) throws Exception {
+		sqlSessionTemplate.insert(statement, obj);
+	}
 }
