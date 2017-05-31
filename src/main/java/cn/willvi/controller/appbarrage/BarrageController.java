@@ -1,5 +1,8 @@
 package cn.willvi.controller.appbarrage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.willvi.controller.BaseController;
 import cn.willvi.util.PageData;
+import cn.willvi.util.RandomColor;
 
 @Controller
 @RequestMapping(value = "/barrage")
@@ -51,8 +55,12 @@ public class BarrageController extends BaseController {
 		pd = this.getPageData();
 		String uid = pd.getString("id");
 		String content = pd.getString("content");
+		Map<String, Object> data = new HashMap<>();
+		data.put("info", content);
+		data.put("img", "/images/cute.png");
+//		data.put("color", RandomColor.getRandColorCode());
 		simpMessageSendingOperations.convertAndSendToUser(uid, "/message",
-				new ResponseMessage(content));
+				data);
 		return new ResponseMessage("成功");
 	}
 
