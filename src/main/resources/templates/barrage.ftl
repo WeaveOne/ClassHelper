@@ -102,13 +102,13 @@
                     //定义一个变量用来存储top值。最小值是0，最大值是600.
                     $top = Math.random() * 560;
                     //定义词一个变量存储字体的大小,最小值10，最大值40.
-                    $fon = Math.random() * 30 + 10;
+                    $fon = 30;
                     //设置span的颜色
                     $arr = ["red","blue","yellow","black","green","pink","orange","purple","white","sienna"];
                     $num = Math.floor(Math.random() * 10);
                     $col = $arr[$num];
                     //为span设置随机的速度,最快速度为2000.
-                    $speed = Math.random() * 10000 + 1000;
+                    $speed = 10000;
                     //创建span节点追加到div中
                     $("<span></span>").appendTo("#box").text($str).addClass("span").siblings().removeClass("span");
                     $(".span").css({"font-size":$fon});
