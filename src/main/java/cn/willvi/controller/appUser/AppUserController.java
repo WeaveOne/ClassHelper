@@ -43,6 +43,15 @@ public class AppUserController extends BaseController{
 	@ResponseBody
 	public String login() throws Exception {
 		PageData pd = this.getPageData();
-		return appUserManager.login(pd);
+		if(!pd.isEmpty() && pd.containsKey("s_id") && pd.containsKey("url") && pd.containsKey("time")) {
+			String s_id = pd.getString("s_id");
+			if(s_id.length()<8 || s_id.length()>15 || !s_id.matches("[0-9]+")) {
+				return "login Failed";
+			} else {
+				return appUserManager.login(pd);
+			}
+		} else {
+			return "Login Failed";
+		}
 	}
 }

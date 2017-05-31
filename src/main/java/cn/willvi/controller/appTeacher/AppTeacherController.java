@@ -44,6 +44,15 @@ public class AppTeacherController extends BaseController{
 	@ResponseBody
 	public String publishQrc() throws Exception{
 		PageData pd = this.getPageData();
-		return appTeacherManager.publishQrc(pd);
+		if(!pd.isEmpty() && pd.containsKey("t_id") && pd.containsKey("url") && pd.containsKey("time")) {
+			String t_id = pd.getString("t_id");
+			if(t_id.length()<5 || t_id.length()>15 || !t_id.matches("[0-9]+")) {
+				return "Publish Failed";
+			} else {
+				return appTeacherManager.publishQrc(pd);
+			}
+		} else {
+			return "Publish Failed";
+		}
 	}
 }
