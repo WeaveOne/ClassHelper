@@ -24,9 +24,9 @@ public class AppUserDaoSupport implements AppUserDao {
 	}
 
 	/*
-	 * 根据url和time查询二维码表
+	 * 根据url查询二维码表
 	 */
-	public Object findByUrlTime(String statement, Object obj) throws Exception {
+	public Object findByUrl(String statement, Object obj) throws Exception {
 		return sqlSessionTemplate.selectOne(statement, obj);
 	}
 	

@@ -43,12 +43,11 @@ public class AppUserService implements AppUserManager {
 		 * 是：完成签到并返回登陆成功信息
 		 * 否：未完成签到并返回登陆失败信息
 		 */
-		if(appUserDao.findByUrlTime("appQrcMapper.findByUrlTime", pd) == null) {
+		if(appUserDao.findByUrl("appQrcMapper.findByUrl", pd) == null) {
 			return "Login Failed";
 		} else {
 			try {
 				Date time = new Date();
-				pd.remove("time");
 				pd.put("time", time);
 				appUserDao.createSignIn("appSignInMapper.addSignIn", pd);
 				return "Login Successful";

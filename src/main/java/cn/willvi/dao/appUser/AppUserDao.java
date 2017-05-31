@@ -13,9 +13,9 @@ public interface AppUserDao {
 	public void addStu(String statement, Object obj) throws Exception;
 	
 	/*
-	 * 根据url和time查询二维码表
+	 * 根据url查询二维码表
 	 */
-	public Object findByUrlTime(String statement, Object obj) throws Exception;
+	public Object findByUrl(String statement, Object obj) throws Exception;
 	
 	/*
 	 * 创建签到表
