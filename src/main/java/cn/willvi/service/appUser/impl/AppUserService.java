@@ -47,8 +47,6 @@ public class AppUserService implements AppUserManager {
 			return "Login Failed";
 		} else {
 			try {
-				Date time = new Date();
-				pd.put("time", time);
 				appUserDao.createSignIn("appSignInMapper.addSignIn", pd);
 				return "Login Successful";
 			} catch(Exception e) {
