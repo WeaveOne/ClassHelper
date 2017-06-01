@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @author 维
  *
  */
-//@Configuration
+@Configuration
 public class MyAdapter extends WebMvcConfigurerAdapter {
 
 	@Override
