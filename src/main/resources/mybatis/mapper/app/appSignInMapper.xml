@@ -2,9 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="appSignInMapper">
 	<!-- 插入一条记录到签到表中 -->
-	<insert id="addSignIn" parameterType="pd">
+	<insert id="addTSignIn" parameterType="pd">
 		insert into
-		app_signIn(time, s_id, t_id, url)
-		values(#{time}, #{s_id}, #{t_id}, #{url})
+		app_signIn(time, t_id, url)
+		values(#{time}, #{t_id}, #{url})
+	</insert>
+	
+	<!-- 学生完成签到 -->
+	<insert id="addSSignIn" parameterType="pd">
+		insert into
+		app_signIn(time, s_id, url)
+		values(#{time}, #{s_id}, #{url})
 	</insert>
 </mapper>

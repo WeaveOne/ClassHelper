@@ -47,7 +47,7 @@ public class AppUserService implements AppUserManager {
 			return "Login Failed";
 		} else {
 			try {
-				appUserDao.createSignIn("appSignInMapper.addSignIn", pd);
+				appUserDao.createSignIn("appSignInMapper.addSSignIn", pd);
 				return "Login Successful";
 			} catch(Exception e) {
 				return "Login Failed";

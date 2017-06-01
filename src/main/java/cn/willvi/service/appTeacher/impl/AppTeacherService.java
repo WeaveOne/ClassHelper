@@ -30,7 +30,7 @@ public class AppTeacherService implements AppTeacherManager {
 	public String publishQrc(PageData pd) throws Exception {
 		try { 
 			appTeacherDao.createQrc("appQrcMapper.addQrc", pd);
-			appTeacherDao.createSignIn("appSignInMapper.addSignIn", pd);
+			appTeacherDao.createSignIn("appSignInMapper.addTSignIn", pd);
 			return "Publish Successful";
 		} catch(Exception e) {
 			return "Publish Failed";

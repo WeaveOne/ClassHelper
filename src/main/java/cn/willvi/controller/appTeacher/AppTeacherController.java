@@ -20,6 +20,8 @@ public class AppTeacherController extends BaseController{
 	
 	/*
 	 * 教师登录
+	 * 前台传递过来的参数：t_id(教师工号)和t_name(教师姓名)
+	 * 发送给前台的String数据：Login Successful/Login Failed
 	 */
 	@RequestMapping(value = "/login")
 	@ResponseBody
@@ -39,6 +41,8 @@ public class AppTeacherController extends BaseController{
 	
 	/*
 	 * 教师发布二维码
+	 * 前台传递过来的参数：url(二维码所对应的字符串)、t_id(教师工号)、time(教师发布二维码的时间)
+	 * 发送给前台的String数据：Publish Successful/Publish Failed
 	 */
 	@RequestMapping(value = "/publishQrc")
 	@ResponseBody

@@ -19,6 +19,8 @@ public class AppUserController extends BaseController{
 
 	/*
 	 * 用户注册
+	 * 前台传递过来的参数：s_name（学生姓名）和s_id（学生学号）
+	 * 发送给前台的String数据：Registration Successful/Registration Failed
 	 */
 	@RequestMapping(value = "/regist")
 	@ResponseBody
@@ -38,6 +40,8 @@ public class AppUserController extends BaseController{
 	
 	/*
 	 * 学生扫码登录并自动完成签到
+	 * 前台传递过来的参数：s_id（学生学号）和url(二维码所对应的字符串)和time（学生签到时间）
+	 * 发送给前台的String数据：Login Successful/Login Failed
 	 */
 	@RequestMapping(value = "/login")
 	@ResponseBody
