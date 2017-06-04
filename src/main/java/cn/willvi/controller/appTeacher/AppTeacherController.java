@@ -66,7 +66,7 @@ public class AppTeacherController extends BaseController{
 	 * 前台传递过来的参数：url(老师当节课发布的二维码字符串)
 	 * 发送给前台的json数据：id(学号) name(姓名) time(学生签到时间)
 	 */
-	@RequestMapping(value = "/checked")
+	@RequestMapping(value = "/check")
 	@ResponseBody
 	public List<SignInTable> check() throws Exception{
 		PageData pd = this.getPageData();
