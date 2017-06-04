@@ -24,7 +24,7 @@ public class AppTeacherController extends BaseController{
 	 * 前台传递过来的参数：t_id(教师工号)和t_name(教师姓名)
 	 * 发送给前台的String数据：Login Successful/Login Failed
 	 */
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/ogin")
 	@ResponseBody
 	public String login() throws Exception{
 		PageData pd = this.getPageData();
