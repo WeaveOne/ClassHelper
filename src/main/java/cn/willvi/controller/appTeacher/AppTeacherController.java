@@ -1,6 +1,6 @@
 package cn.willvi.controller.appTeacher;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.willvi.controller.BaseController;
+import cn.willvi.entity.SignInTable;
 import cn.willvi.service.appTeacher.AppTeacherManager;
 import cn.willvi.util.PageData;
 
@@ -58,5 +59,17 @@ public class AppTeacherController extends BaseController{
 		} else {
 			return "Publish Failed";
 		}
+	}
+	
+	/*
+	 * 教师查看学生签到情况
+	 * 前台传递过来的参数：url(老师当节课发布的二维码字符串)
+	 * 发送给前台的json数据：id(学号) name(姓名) time(学生签到时间)
+	 */
+	@RequestMapping(value = "/check")
+	@ResponseBody
+	public List<SignInTable> check() throws Exception{
+		PageData pd = this.getPageData();
+		return appTeacherManager.check(pd);
 	}
 }

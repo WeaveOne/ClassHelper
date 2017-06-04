@@ -1,10 +1,13 @@
 package cn.willvi.service.appTeacher.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import cn.willvi.dao.appTeacher.AppTeacherDao;
+import cn.willvi.entity.SignInTable;
 import cn.willvi.service.appTeacher.AppTeacherManager;
 import cn.willvi.util.PageData;
 
@@ -36,5 +39,11 @@ public class AppTeacherService implements AppTeacherManager {
 			return "Publish Failed";
 		}
 	}
-
+	
+	/*
+	 * 教师查看学生签到情况
+	 */
+	public List<SignInTable> check(PageData pd) throws Exception {
+		return appTeacherDao.findByUrl("appTeacherMapper.findByUrl", pd);
+	}
 }

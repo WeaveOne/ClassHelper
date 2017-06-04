@@ -10,4 +10,14 @@
 		where 
 			t_id = #{t_id} and t_name = #{t_name}
 	</select>
+	
+	<!-- 通过url查找学生签到情况 -->
+	<select id="findByUrl" parameterType="pd" resultType="cn.willvi.entity.SignInTable" >
+		select 
+			s.s_id id, s_name name, time
+		from 
+			app_signIn s INNER JOIN app_user u on s.s_id = u.s_id 
+		where 
+			url = #{url}
+	</select>
 </mapper>
