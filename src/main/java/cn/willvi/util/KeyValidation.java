@@ -1,5 +1,10 @@
 package cn.willvi.util;
 
+/**
+ * 加密Key校验
+ * @author 维
+ *
+ */
 public class KeyValidation {
 
 	private static final String CONFUSIONCODE = "ww";
@@ -33,5 +38,9 @@ public class KeyValidation {
 			return true;
 		}
 		return false;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(MD5.md5("id" + DateUtil.getDay() + "ww"));
 	}
 }
