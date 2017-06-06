@@ -42,6 +42,12 @@ public class BarrageController extends BaseController {
 	public ResponseMessage handleSubscribe() {
 		return new ResponseMessage("连接成功");
 	}
+	
+	@MessageMapping("/image")
+	@SendToUser("/image")
+	public ResponseMessage handleImage() {
+		return new ResponseMessage("连接成功");
+	}
 
 	/**
 	 * 测试对指定用户发送消息方法

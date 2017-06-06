@@ -2,13 +2,13 @@
 <head>
     <meta charset="UTF-8"/>
     <title>弹幕</title>
-    
-
-    <link rel="stylesheet" type="text/css" href="/css/barrager.css">
+<link rel="stylesheet" type="text/css" href="/css/barrager.css">
 </head>
 <body onload="connect()" bgcolor="#FF6600">
 <noscript><h2 style="color: #e80b0a;">Sorry，浏览器不支持WebSocket</h2></noscript>
-
+  <div id="images">
+  
+</div>
 
 
           
@@ -24,8 +24,17 @@
         stompClient.connect({}, function (frame) {
             console.log('Connected:' + frame);
             stompClient.subscribe('/user/1/message', function (response) {
-            //	console.log(JSON.parse(response.body));
+            	console.log(JSON.parse(response.body));
                 showBarrage(JSON.parse(response.body));
+            })
+        });
+         var socket2 = new SockJS('/barrage');
+          stompClient2 = Stomp.over(socket2);
+        stompClient2.connect({}, function (frame) {
+            console.log('Connected:' + frame);
+            stompClient2.subscribe('/user/1/image', function (response) {
+            console.log(JSON.parse(response.body));
+                showImage(JSON.parse(response.body));
             })
         });
     }
@@ -40,6 +49,14 @@
 	function showBarrage(data){
 		if(data){
 			$('body').barrager(data);
+		}
+	}
+	
+	function showImage(data){
+		if(data){
+			var html = "<a href='javascript:;' i='"+data.path+"' class='Slide Two'><img src='"+data.path+"' ></a>";
+			console.log(html);
+			$("#images").append(html);
 		}
 	}
 </script>
