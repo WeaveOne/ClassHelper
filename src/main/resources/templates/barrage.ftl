@@ -75,7 +75,7 @@
 	
 	function showImage(data){
 		if(data){
-			var html = "<div class='col-sm-6 col-md-4'><div class='thumbnail'><a class='lightbox' href='"+data.path+"'><img src='"+data.path+"' alt='Traffic'></a><div class='caption'><h3>Thumbnail label</h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div></div>";
+			var html = "<div class='col-sm-6 col-md-4'><div class='thumbnail'><a class='lightbox' href='"+data.path+"'><img src='"+data.path+"' width='200' height='200' alt='Traffic'></a><div class='caption'><h3>Thumbnail label</h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div></div>";
 			console.log(html);
 			$(".row").append(html);
 			baguetteBox.run('.tz-gallery');
