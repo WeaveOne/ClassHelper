@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import cn.willvi.entity.Result;
 import cn.willvi.entity.UploadImage;
+import cn.willvi.enums.ResultEnum;
 import cn.willvi.handle.FileUploadException;
 import cn.willvi.service.file.FileUploadManager;
 import cn.willvi.util.FileUpload;
@@ -70,10 +71,10 @@ public class FileUploadController extends BaseController {
 		MultipartFile file = image.getFile();
 		Integer tId = image.getId();
 		if (!FileValidation.isImage(file.getOriginalFilename())) {
-			throw new FileUploadException(1, "非图片文件，禁止上传");
+			throw new FileUploadException(ResultEnum.FILE_TYPE_ERROR);
 		}
 		if (file.isEmpty()) {
-			throw new FileUploadException(1, "上传失败，文件为空");
+			throw new FileUploadException(ResultEnum.FILE_EMPTY);
 		} else {
 			String fileName = System.currentTimeMillis() + "";
 			String filePath = PathUtils.getPath(ROOT, tId + "");
@@ -81,13 +82,13 @@ public class FileUploadController extends BaseController {
 			try {
 				name = FileUpload.fileUp(file, filePath, fileName);
 			} catch (IOException e) {
-				throw new FileUploadException(1, "上传失败，文件出错");
+				throw new FileUploadException(ResultEnum.FILE_ERROR);
 			}
 			Map<String, Object> data = new HashMap<>();
 			data.put("path", PathUtils.getPath(tId + "", name));
 			simpMessageSendingOperations.convertAndSendToUser("1", "/image", data);
 
-			return ResultUtil.success("上传成功");
+			return ResultUtil.info(ResultEnum.FILE_UPLODE_SUCCESS);
 		}
 	}
 

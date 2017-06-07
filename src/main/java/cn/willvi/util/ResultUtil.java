@@ -1,6 +1,7 @@
 package cn.willvi.util;
 
 import cn.willvi.entity.Result;
+import cn.willvi.enums.ResultEnum;
 
 /**
  * 返回结果处理
@@ -30,6 +31,13 @@ public class ResultUtil {
 		Result result = new Result();
 		result.setCode(code);
 		result.setMsg(msg);
+		return result;
+	}
+	
+	public static Result info(ResultEnum resultEnum) {
+		Result result = new Result();
+		result.setCode(resultEnum.getCode());
+		result.setMsg(resultEnum.getMsg());
 		return result;
 	}
 	
