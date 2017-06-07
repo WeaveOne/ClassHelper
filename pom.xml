@@ -6,7 +6,7 @@
 	<groupId>cn.willvi</groupId>
 	<artifactId>ClassHelper</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>ClassHelper</name>
 	<description>ClassHelperManage</description>
