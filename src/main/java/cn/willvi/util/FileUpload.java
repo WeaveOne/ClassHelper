@@ -37,6 +37,7 @@ public class FileUpload {
 			extName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 		}
 		copyFile(file.getInputStream(), filePath, fileName + extName).replaceAll("-", "");
+		System.out.println(filePath+fileName + extName);
 		return fileName + extName;
 	}
 
