@@ -9,7 +9,7 @@ public class FileValidation {
 
 	public static boolean isImage(String imgName) {
 		String[] types = new String[] { ".jpg", ".png", ".jpeg", ".bmp" };
-		String suffix = imgName.substring(imgName.indexOf("."));
+		String suffix = imgName.substring(imgName.lastIndexOf("."));
 		if (!suffix.isEmpty()) {
 			for (int i = 0; i < types.length; i++) {
 				String type = types[i];
