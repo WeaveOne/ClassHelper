@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.willvi.controller.BaseController;
+import cn.willvi.entity.ClassTable;
 import cn.willvi.entity.SignInTable;
 import cn.willvi.service.appTeacher.AppTeacherManager;
 import cn.willvi.util.PageData;
@@ -71,5 +72,29 @@ public class AppTeacherController extends BaseController{
 	public List<SignInTable> check() throws Exception{
 		PageData pd = this.getPageData();
 		return appTeacherManager.check(pd);
+	}
+	
+	/*
+	 * 教师发布课程
+	 * 前台传递过来的参数：url(二维码所对应的字符串)、t_id(教师工号)、time(教师发布二维码的时间),c_name（课程名称），c_address（课程地点）
+	 * 发送给前台的String数据：Publish Successful/Publish Failed
+	 */
+	@RequestMapping(value = "/publishClass")
+	@ResponseBody
+	public String publishClass() throws Exception{
+		PageData pd = this.getPageData();
+		return appTeacherManager.publishClass(pd);
+	}
+	
+	/*
+	 * 教师查看发布课程情况
+	 * 前台传递过来的参数：t_id
+	 * 发送给前台的json数据：t_name(教师姓名) c_name(课程姓名) c_address(上课地点) time(发布时间)
+	 */
+	@RequestMapping(value = "/checkClass")
+	@ResponseBody
+	public List<ClassTable> checkClass() throws Exception{
+		PageData pd = this.getPageData();
+		return appTeacherManager.checkClass(pd);
 	}
 }
