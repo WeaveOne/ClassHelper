@@ -14,7 +14,7 @@
 	<!-- 通过url查找学生签到情况 -->
 	<select id="findByUrl" parameterType="pd" resultType="cn.willvi.entity.SignInTable" >
 		select 
-			s.s_id id, s_name name, time
+			s.s_id id, u.s_name name, s.time
 		from 
 			app_signIn s INNER JOIN app_user u on s.s_id = u.s_id 
 		where 

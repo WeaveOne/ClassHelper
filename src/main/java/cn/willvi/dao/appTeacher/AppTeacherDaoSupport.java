@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import cn.willvi.entity.ClassTable;
 import cn.willvi.entity.SignInTable;
 
 
@@ -39,6 +40,22 @@ public class AppTeacherDaoSupport implements AppTeacherDao {
 	 * 通过url查找学生签到情况
 	 */
 	public List<SignInTable> findByUrl(String statement, Object obj) throws Exception {
+		return sqlSessionTemplate.selectList(statement, obj);
+	}
+	
+	/*
+	 * 创建课程表
+	 */
+	@Override
+	public void createClass(String statement, Object obj) throws Exception {
+		sqlSessionTemplate.insert(statement, obj);
+	}
+	
+	/*
+	 * 通过t_id查找教师发布课程情况
+	 */
+	@Override
+	public List<ClassTable> findByT_id(String statement, Object obj) throws Exception {
 		return sqlSessionTemplate.selectList(statement, obj);
 	}
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="appClassMapper">
+	<!-- 教师发布课程 -->
+	<insert id="addClassTable" parameterType="pd">
+		insert into
+		app_class(c_name, time, t_id, c_address)
+		values(#{c_name}, #{time}, #{t_id}, #{c_address})
+	</insert>
+	
+	<!-- 查询教师发布的课程 -->
+	<select id="findByT_id" parameterType="pd" resultType="pd">
+		select b.t_name, a.c_name, a.c_address, a.time
+		from app_class a inner join app_teacher b 
+		on a.t_id = b.t_id
+		where a.t_id = #{t_id}
+	</select>
+</mapper>
