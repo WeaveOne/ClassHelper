@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.willvi.controller.BaseController;
 import cn.willvi.entity.ClassTable;
+import cn.willvi.entity.Result;
 import cn.willvi.entity.SignInTable;
 import cn.willvi.service.appTeacher.AppTeacherManager;
 import cn.willvi.util.PageData;
+import cn.willvi.util.ResultUtil;
 
 @Controller
 @RequestMapping("/app/teacher")
@@ -96,5 +98,22 @@ public class AppTeacherController extends BaseController{
 	public List<ClassTable> checkClass() throws Exception{
 		PageData pd = this.getPageData();
 		return appTeacherManager.checkClass(pd);
+	}
+	
+	/*
+	 * 修改教师个人信息
+	 * 前台传递过来的参数：t_id
+	 * 
+	 */
+	@RequestMapping(value = "/updateInformation")
+	@ResponseBody
+	public Result updateInformation() throws Exception{
+		PageData pd = this.getPageData();
+		Object result = appTeacherManager.updateInformation(pd);
+		if(result.equals("0")){
+			return ResultUtil.error("数据异常");
+		}else{
+			return ResultUtil.success();
+		}
 	}
 }

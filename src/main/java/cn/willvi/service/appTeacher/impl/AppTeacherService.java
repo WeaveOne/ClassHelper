@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import cn.willvi.dao.Dao;
 import cn.willvi.dao.appTeacher.AppTeacherDao;
 import cn.willvi.entity.ClassTable;
 import cn.willvi.entity.SignInTable;
@@ -16,6 +17,8 @@ import cn.willvi.util.PageData;
 public class AppTeacherService implements AppTeacherManager {
 	@Resource(name = "appTeacherDaoSupport")
 	private AppTeacherDao appTeacherDao;
+	@Resource(name = "daoSupport")
+	private Dao dao;
 	/*
 	 * 教师登录
 	 */
@@ -70,6 +73,11 @@ public class AppTeacherService implements AppTeacherManager {
 	@Override
 	public List<ClassTable> checkClass(PageData pd) throws Exception {
 		return appTeacherDao.findByT_id("appClassMapper.findByT_id", pd);
+	}
+
+	@Override
+	public Object updateInformation(PageData pd) throws Exception {
+		return dao.update("appTeacherMapper.updateInformation", pd);
 	}
 	
 	

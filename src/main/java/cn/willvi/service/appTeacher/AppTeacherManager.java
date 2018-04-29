@@ -31,4 +31,11 @@ public interface AppTeacherManager {
 	 * 教师查看发布课程情况
 	 */
 	public List<ClassTable> checkClass(PageData pd) throws Exception;
+	/**
+	 * 更新教师信息
+	 * @param pd
+	 * @return
+	 * @throws Exception
+	 */
+	public Object updateInformation(PageData pd) throws Exception;
 }

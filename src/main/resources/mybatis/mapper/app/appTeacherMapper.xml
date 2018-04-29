@@ -20,4 +20,9 @@
 		where 
 			url = #{url}
 	</select>
+	
+	<!-- 通过url查找学生签到情况 -->
+	<update id="updateInformation" parameterType="pd" >
+		update app_teacher set t_phone = '${phone}' where t_id = '${id}'
+	</update>
 </mapper>
