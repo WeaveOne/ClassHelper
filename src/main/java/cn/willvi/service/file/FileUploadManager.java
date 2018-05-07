@@ -1,6 +1,11 @@
 package cn.willvi.service.file;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
+
+import cn.willvi.entity.Files;
+import cn.willvi.util.PageData;
 
 /**
  * 文件上传管理类
@@ -18,4 +23,12 @@ public interface FileUploadManager {
 	 * @return
 	 */
 	public String uploadImg(MultipartFile file, String dir);
+	/**
+	 * 上传文件
+	 * @param pd
+	 * @return
+	 */
+	public Object uploadFile(PageData pd) throws Exception;
+	
+	public List<Files> getFileList(PageData pd) throws Exception;
 }

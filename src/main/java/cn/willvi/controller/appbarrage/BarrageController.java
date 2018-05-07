@@ -9,6 +9,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,13 +19,12 @@ import cn.willvi.util.PageData;
 import cn.willvi.util.RandomColor;
 
 @Controller
-@RequestMapping(value = "/barrage")
 public class BarrageController extends BaseController {
 
 	@Autowired
 	private SimpMessageSendingOperations simpMessageSendingOperations;
 
-	@MessageMapping("/welcome")
+	@MessageMapping("/barrage/welcome")
 	@SendTo("/topic/getResponse")
 	public ResponseMessage say(RequestMessage message) {
 		System.out.println(message.getName());
@@ -37,13 +37,13 @@ public class BarrageController extends BaseController {
 	 * 
 	 * @return
 	 */
-	@MessageMapping("/message")
+	@MessageMapping("/barrage/message")
 	@SendToUser("/message")
 	public ResponseMessage handleSubscribe() {
 		return new ResponseMessage("连接成功");
 	}
 	
-	@MessageMapping("/image")
+	@MessageMapping("/barrage/image")
 	@SendToUser("/image")
 	public ResponseMessage handleImage() {
 		return new ResponseMessage("连接成功");
@@ -54,7 +54,7 @@ public class BarrageController extends BaseController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(path = "/send")
+	@RequestMapping(value = "/app/barrage/send")
 	@ResponseBody
 	public ResponseMessage send() {
 		PageData pd = new PageData();
@@ -64,13 +64,13 @@ public class BarrageController extends BaseController {
 		Map<String, Object> data = new HashMap<>();
 		data.put("info", content);
 		data.put("img", "/images/cute.png");
-//		data.put("color", RandomColor.getRandColorCode());
+		data.put("color", RandomColor.getRandColorCode());
 		simpMessageSendingOperations.convertAndSendToUser(uid, "/message",
 				data);
 		return new ResponseMessage("成功");
 	}
 
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = "/barrage/index")
 	public String bragger() {
 
 		return "barrage";

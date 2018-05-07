@@ -1,6 +1,7 @@
 package cn.willvi.handle;
 
 import org.apache.tomcat.util.http.fileupload.FileUploadBase.FileSizeLimitExceededException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +24,9 @@ public class ExceptionHandle {
 		}
 		else if(ex instanceof FileUploadException) {
 			return ResultUtil.error(((FileUploadException) ex).getCode(), ex.getMessage());
+		}
+		else if(ex instanceof MissingServletRequestParameterException) {
+			return ResultUtil.error(404,"未正确传递参数");
 		}
 		else {
 			logger.error(ex.getMessage());

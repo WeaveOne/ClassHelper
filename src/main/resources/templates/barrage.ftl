@@ -4,9 +4,9 @@
     <meta charset="UTF-8"/>
     <title>弹幕</title>
 <link rel="stylesheet" type="text/css" href="/css/barrager.css">
-<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">	
+<link rel="/css/bootstrap/bootstrap.css" rel="stylesheet">	
 <link rel="stylesheet" href="/css/baguetterbox/baguetteBox.min.css">
-<link rel="stylesheet" href="css/baguetterbox/gallery-clean.css">
+<link rel="stylesheet" href="/css/baguetterbox/gallery-clean.css">
 </head>
 <body onload="connect()" bgcolor="#FF6600">
 <noscript><h2 style="color: #e80b0a;">Sorry，浏览器不支持WebSocket</h2></noscript>
@@ -32,7 +32,7 @@
 <script type="text/javascript" src="/js/plugins/stomp/stomp.js"></script>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="/js/plugins/barrage/jquery.barrager.min.js"></script>
-<script type="text/javascript" src="js/plugins/baguetterbox/baguetteBox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/baguetterbox/baguetteBox.min.js"></script>
 
 <script type="text/javascript">
     var stompClient = null;
@@ -41,7 +41,7 @@
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             console.log('Connected:' + frame);
-            stompClient.subscribe('/user/1/message', function (response) {
+            stompClient.subscribe('/user/${Session.tId}/message', function (response) {
             	console.log(JSON.parse(response.body));
                 showBarrage(JSON.parse(response.body));
             })
@@ -50,7 +50,7 @@
           stompClient2 = Stomp.over(socket2);
         stompClient2.connect({}, function (frame) {
             console.log('Connected:' + frame);
-            stompClient2.subscribe('/user/1/image', function (response) {
+            stompClient2.subscribe('/user/${Session.tId}/image', function (response) {
             console.log(JSON.parse(response.body));
                 showImage(JSON.parse(response.body));
             })

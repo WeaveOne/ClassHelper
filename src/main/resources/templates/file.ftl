@@ -5,7 +5,7 @@
         <title>Hello World!</title>
     </head>
     <body>
-       <form method="POST" enctype="multipart/form-data" action="/uploadImg"> 
+       <form method="POST" enctype="multipart/form-data" action="/app/uploadFile"> 
        				
        				<input type="text" name="encryptionParameter" value="id" />
        				<input type="text" name="key" value="0cf395f0ae2a4c332a093cd19944e871" />
